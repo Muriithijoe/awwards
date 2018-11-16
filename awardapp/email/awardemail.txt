@@ -1,0 +1,4 @@
+Ssup {{name}},
+
+Welcome to the Award site family. You are welcome to review and vote on
+sites .
