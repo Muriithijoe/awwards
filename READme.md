@@ -1,4 +1,4 @@
-**Awward-Website**
+*Awward-Website*
 
 **Awward Application**
 .
@@ -9,10 +9,14 @@
 This is awword website that helps users to post there project and other users can rate on them. As a user before one is able to post he/she project is required to sign up .Also one is able to add profile and he/she can see his/her profile.
 
 **Setup/Installation Requirements.**
+
 Make sure the computer has atom .
+
 Make sure your computer in connected to a browser.
+
 Python has been used to form this application.
-Known Bugs.
+
+**Known Bugs.**
 there are no know Bugs in this web page.
 
 **Technologies Used:**
