@@ -1,13 +1,16 @@
-from django.shortcuts import render,redirect
-from django.http  import HttpResponse,Http404
-from .models import Site,Profile
+from django.shortcuts import render,redirect,HttpResponse
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.decorators import login_required
-
+from .forms import *
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from .models import  *
+from .serializer import ProfileSerializer,ProjectSerializer
 
 # Create your views here.
-@login_required(login_url='/accounts/login/')
-def landing(request):
+# @login_required(login_url='/accounts/login/')
+
+def index(request):
     current_user = request.user
     sites = Site.get_all()
     return render(request,'landing.html',{'sites':sites})
@@ -19,7 +22,7 @@ def site(request,site_id):
         raise Http404()
     return render(request,'site-detail.html',{'site':site})
 
-@login_required(login_url='/accounts/login/')
+# @login_required(login_url='/accounts/login/')
 def new_site(request):
     current_user = request.user
     if request.method == 'POST':
@@ -83,3 +86,15 @@ def search_site(request,site_id):
         # return render(request, 'no_project.html')
 
     return render(request, 'site-detail.html', {'site':site})
+
+class ProfileList(APIView):
+    def get(self, request, format=None):
+        all_profile = AwardsProfiles.objects.all()
+        serializers = ProfileSerializer(all_profile, many=True)
+        return Response(serializers.data)
+
+class ProjectList(APIView):
+    def get(self, request, format=None):
+        all_project = AwardsProjects.objects.all()
+        serializers = ProjectSerializer(all_project, many=True)
+        return Response(serializers.data)

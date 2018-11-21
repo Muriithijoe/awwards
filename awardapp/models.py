@@ -6,7 +6,7 @@ from tinymce.models import HTMLField
 # Create your models here.
 class Site(models.Model):
     title = models.CharField(max_length = 50)
-    image = models.ImageField(upload_to = 'projects/')
+    image = models.ImageField(upload_to = 'sites/')
     description = models.TextField(max_length = 500)
     link = models.TextField(validators=[URLValidator()],null=True)
     profile = models.ForeignKey(User,on_delete=models.CASCADE, null=True)
@@ -43,3 +43,13 @@ class Profile(models.Model):
 
     def delete_profile(self):
         self.delete()
+
+class AwardsProfiles(models.Model):
+    name = models.CharField(max_length=40)
+    bio = models.TextField()
+    projects = models.CharField(max_length=70)
+    dp = models.ImageField(upload_to = 'dp/')
+
+class AwardsProjects(models.Model):
+    project_name = models.CharField(max_length=40)
+    description = models.TextField()
