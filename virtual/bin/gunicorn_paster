@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 #!/home/joe/Documents/Core/Awards/virtual/bin/python
+=======
+#!/home/joe/Documents/Core/Instagram/virtual/bin/python
+>>>>>>> 5f9be247506d29a3a11102369e3800b99598398e
 
 # -*- coding: utf-8 -*-
 import re
