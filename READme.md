@@ -1,8 +1,9 @@
 # Awward-Website
 
 **Awward Application**
+
 ~Site for reviewing, rating and posting projects.
-.
+
 **By** *Joe Muriithi*.
 
 **Description.**
@@ -18,6 +19,7 @@ Make sure your computer in connected to a browser.
 Python has been used to form this application.
 
 **Known Bugs.**
+
 there are no know Bugs in this web page.
 
 **Technologies Used:**
@@ -27,12 +29,15 @@ Bootstarp
 CSS
 
 **Support and contact details.**
+
 For more information  Email me at muriithijoe92@gmail.com
 
 **Link to live website.**
+
 Awwards-Website
 
 **License.**
+
 MIT License
 
 Copyright (c) [2018] [Joe Muriithi]
