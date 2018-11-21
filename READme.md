@@ -1,6 +1,7 @@
-*Awward-Website*
+* Awward-Website *
 
 **Awward Application**
+~Site for reviewing, rating and posting projects.
 .
 **By** *Joe Muriithi*.
 
