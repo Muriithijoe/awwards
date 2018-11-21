@@ -10,7 +10,7 @@ from .serializer import ProfileSerializer,ProjectSerializer
 # Create your views here.
 # @login_required(login_url='/accounts/login/')
 
-def index(request):
+def landing(request):
     current_user = request.user
     sites = Site.get_all()
     return render(request,'landing.html',{'sites':sites})
@@ -66,8 +66,8 @@ def create_profile(request):
 
 def search_results(request):
 
-    if 'project' in request.GET and request.GET["project"]:
-        search_term = request.GET.get("project")
+    if 'site' in request.GET and request.GET["site"]:
+        search_term = request.GET.get("site")
         searched_sites = Site.search_by_title(search_term)
         message = f"{search_term}"
 
