@@ -22,8 +22,8 @@
       <h1 class="profile-user-name">{{profile.profile}}</h1>
       <h4>{{profile.contact}}</h4>
 
-      <button class="btn profile-create-btn"><a href="#">Edit profile</a> </button>
-      {% for project in projects %}
+      <button class="btn profile-create-btn"><a href="{% url 'create-profile' %}">Edit profile</a> </button>
+      {% for project in sites %}
         <p>Title: {{project.title}}</p>
         <img  src="{{project.image.url}}" class="radius" alt="Project" class="img-responsive">
       {% endfor%}
