@@ -3,11 +3,12 @@ from django.http  import HttpResponse,Http404
 from .models import Site,Profile
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.decorators import login_required
+from .forms import SiteForm,ProfileForm
 
 # Create your views here.
 # @login_required(login_url='/accounts/login/')
 def landing(request):
-    
+
     # current_user = request.user
     # sites = Site.objects.all()
     return render(request,'landing.html')
