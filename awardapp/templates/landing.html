@@ -1,8 +1,20 @@
 {%extends 'base.html'%}
+{% load bootstrap3 %}
+{% load staticfiles %}
+{% load static %}
 
 {% block content %}
 {{block.super}}
-<div class="container">
+  <div class="container">
+  <div class="row">
+      <img src="../static/backie.jpeg"  class="img-responsive" class="pic" alt="image">
+      <style>
+        .pic{
+          height: 500px;
+          width: 1150px;
+        }
+      </style>
+
   <div class="row">
     {% for post in sites %}
     <div class="col-md-6">
@@ -13,6 +25,7 @@
     {% endfor %}
   </div>
 
+</div>
 </div>
 
 {% endblock %}

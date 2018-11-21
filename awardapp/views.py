@@ -1,10 +1,10 @@
 from django.shortcuts import render,redirect,HttpResponse
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.decorators import login_required
-from .forms import SiteForm,ProfileForm
+from .forms import SiteForm,ProfileForm,VoteForm
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .models import  AwardsProfiles,AwardsProjects
+from .models import  Site,Profile,AwardsProfiles,AwardsProjects
 from .serializer import ProfileSerializer,ProjectSerializer
 
 # Create your views here.

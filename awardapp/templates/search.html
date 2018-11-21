@@ -3,7 +3,7 @@
 <div class="container">
 
   <div class="row">
-    {% if projects%}
+    {% if sites%}
       <h2>Found {{ projects|length }} of searched term {{message}}</h2>
     {% else %}
       <h2> Found 0 projects for the search term {{message}}</h2>
@@ -13,10 +13,10 @@
 
   <div class="row">
 
-  {% if projects %}
-    {% for project in projects %}
+  {% if sites %}
+    {% for project in sites %}
       <div class="col-sm-6 col-md-3">
-        <a href="/project-detail/{{project.id}}">{{project.title}}</a>
+        <a href="/site-detail/{{site.id}}">{{project.title}}</a>
       </div>
     {% endfor %}
   {% endif %}
