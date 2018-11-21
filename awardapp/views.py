@@ -16,11 +16,28 @@ def landing(request):
     return render(request,'landing.html',{'sites':sites})
 
 def site(request,site_id):
-    try:
-        site = Site.objects.get(id = site_id)
-    except ObjectDoesNotExist:
-        raise Http404()
-    return render(request,'site-detail.html',{'site':site})
+    site = Site.objects.get(id = site_id)
+    rating = round(((project.design + project.usability + project.content)/3),2)
+    if request.method == 'POST':
+        form = VoteForm(request.POST)
+        if form.is_valid:
+            if site.design == 1:
+                site.design = int(request.POST['design'])
+            else:
+                site.design = (site.design + int(request.POST['design']))/2
+            if site.usability == 1:
+                site.usability = int(request.POST['usability'])
+            else:
+                site.usability = (site.design + int(request.POST['usability']))/2
+            if site.content == 1:
+                site.content = int(request.POST['content'])
+            else:
+                site.content = (site.design + int(request.POST['content']))/2
+            site.save()
+    else:
+        form = VoteForm()
+    return render(request,'site.html',{'form':form,'site':site,'rating':rating})
+
 
 # @login_required(login_url='/accounts/login/')
 def new_site(request):
