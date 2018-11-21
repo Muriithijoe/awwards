@@ -17,7 +17,7 @@ def landing(request):
 
 def site(request,site_id):
     site = Site.objects.get(id = site_id)
-    rating = round(((project.design + project.usability + project.content)/3),2)
+    rating = round(((site.design + site.usability + site.content)/3),2)
     if request.method == 'POST':
         form = VoteForm(request.POST)
         if form.is_valid:
@@ -46,7 +46,7 @@ def new_site(request):
         form = SiteForm(request.POST, request.FILES)
         if form.is_valid():
             site = form.save(commit=False)
-            site.profile = current_user
+            site.user = current_user
             site.save()
         return redirect('landingPage')
 
