@@ -7,6 +7,7 @@ from rest_framework.views import APIView
 from .models import  Site,Profile,AwardsProfiles,AwardsProjects
 from .serializer import ProfileSerializer,ProjectSerializer
 from rest_framework import status
+from .permissions import IsAdminOrReadOnly
 
 # Create your views here.
 # @login_required(login_url='/accounts/login/')
@@ -117,6 +118,7 @@ class ProfileList(APIView):
             serializers.save()
             return Response(serializers.data, status=status.HTTP_201_CREATED)
         return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+        permission_classes = (IsAdminOrReadOnly,)
 
 class ProjectList(APIView):
     def get(self, request, format=None):
@@ -130,3 +132,30 @@ class ProjectList(APIView):
             serializers.save()
             return Response(serializers.data, status=status.HTTP_201_CREATED)
         return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
+        permission_classes = (IsAdminOrReadOnly,)
+
+class ProfileDescription(APIView):
+    permission_classes = (IsAdminOrReadOnly,)
+    def get_profile(self, pk):
+        try:
+            return ProfileList.objects.get(pk=pk)
+        except ProfileList.DoesNotExist:
+            return Http404
+
+    def get(self, request, pk, format=None):
+        merch = self.get_profile(pk)
+        serializers = ProfileSerializer(merch)
+        return Response(serializers.data)
+
+class ProjectDescription(APIView):
+    permission_classes = (IsAdminOrReadOnly,)
+    def get_project(self, pk):
+        try:
+            return ProjectList.objects.get(pk=pk)
+        except ProjectList.DoesNotExist:
+            return Http404
+
+    def get(self, request, pk, format=None):
+        merch = self.get_project(pk)
+        serializers = ProjectSerializer(merch)
+        return Response(serializers.data)

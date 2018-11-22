@@ -4,9 +4,9 @@ from .models import AwardsProfiles,AwardsProjects
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = AwardsProfiles
-        fields = ('name', 'bio', 'projects', 'dp')
+        fields = ('id','name', 'bio', 'projects', 'dp')
 
 class ProjectSerializer(serializers.ModelSerializer):
     class Meta:
         model = AwardsProjects
-        fields = ('project_name', 'description')
+        fields = ('id','project_name', 'description')
