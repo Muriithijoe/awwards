@@ -68,6 +68,7 @@ INSTALLED_APPS = [
     'bootstrap3',
     'tinymce',
     'rest_framework',
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
@@ -149,5 +150,11 @@ STATICFILES_DIR=[
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    )
+}
 
 django_heroku.settings(locals())
